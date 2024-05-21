@@ -7,6 +7,191 @@
     <link rel="stylesheet" href="Css/styles.css">
 </head>
 <body>
+    <syle>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav {
+    position: relative;
+}
+
+header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header .nav-links li {
+    display: inline;
+}
+
+header .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+}
+
+header .nav-links li input {
+    padding: 5px;
+}
+
+header .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+header .hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px;
+}
+
+.categories-page {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.categories-page h2 {
+    margin-bottom: 40px;
+    font-size: 2em;
+    color: #333;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.category-item {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 40px);
+    max-width: calc(33.333% - 40px);
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.category-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.category-item h3 {
+    margin-top: 15px;
+    font-size: 1.5em;
+}
+
+.category-item p {
+    margin-top: 10px;
+    color: #666;
+}
+
+.category-item .view-more {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.category-item .view-more:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .footer-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+footer .social-media a {
+    margin: 0 5px;
+    display: inline-block;
+}
+
+footer .newsletter input {
+    padding: 10px;
+    margin-right: 10px;
+    width: 250px;
+    max-width: 80%;
+}
+
+footer .newsletter button {
+    padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+    header .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f8f8f8;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 0;
+    }
+
+    header .nav-links.active {
+        display: flex;
+    }
+
+    header .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    header .hamburger {
+        display: flex;
+    }
+
+    .category-list {
+        flex-direction: column;
+    }
+
+    .category-item {
+        max-width: 100%;
+    }
+}</style>
+    
     <header>
         <div class="logo">MyReviewSite</div>
         <nav>
@@ -69,6 +254,28 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+    const filterInput = document.querySelector('.filter-input');
+    const categoryItems = document.querySelectorAll('.category-item');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    filterInput.addEventListener('input', (e) => {
+        const filter = e.target.value.toLowerCase();
+        categoryItems.forEach(item => {
+            const categoryName = item.querySelector('h3').textContent.toLowerCase();
+            if (categoryName.includes(filter)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
