@@ -4,13 +4,643 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swift Picks</title>
-    <link rel="stylesheet" href="Css/styles.css">
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav {
+    position: relative;
+}
+
+header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header .nav-links li {
+    display: inline;
+}
+
+header .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+}
+
+header .nav-links li input {
+    padding: 5px;
+}
+
+header .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+header .hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px;
+}
+
+/* Main Banner */
+.main-banner {
+    margin-top: 60px;
+    background-color: #e2e2e2;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    transition: opacity 1s ease-in-out;
+    position: relative;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Top Categories */
+.top-categories, .latest-reviews, .popular-products {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.top-categories h2, .latest-reviews h2, .popular-products h2 {
+    margin-bottom: 40px;
+    font-size: 2em;
+    color: #333;
+}
+
+.categories, .reviews, .products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.category, .review, .product {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 40px);
+    max-width: calc(33.333% - 40px);
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.category img, .review img, .product img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.category h3, .review h3, .product h3 {
+    margin-top: 15px;
+    font-size: 1.5em;
+}
+
+.category p, .review p, .product p {
+    margin-top: 10px;
+    color: #666;
+}
+
+.rating {
+    display: inline-block;
+    margin-top: 10px;
+    color: #FFD700;
+    font-size: 1.2em;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .footer-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+footer .social-media a {
+    margin: 0 5px;
+    display: inline-block;
+}
+
+footer .newsletter input {
+    padding: 10px;
+    margin-right: 10px;
+    width: 250px;
+    max-width: 80%;
+}
+
+footer .newsletter button {
+    padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+    header .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f8f8f8;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 0;
+    }
+
+    header .nav-links.active {
+        display: flex;
+    }
+
+    header .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    header .hamburger {
+        display: flex;
+    }
+
+    .categories, .reviews, .products {
+        flex-direction: column;
+    }
+
+    .category, .review, .product {
+        max-width: 100%;
+    }
+}
+/* Categories Page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav {
+    position: relative;
+}
+
+header .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header .nav-links li {
+    display: inline;
+}
+
+header .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+}
+
+header .nav-links li input {
+    padding: 5px;
+}
+
+header .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+header .hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px;
+}
+
+.categories-page {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.categories-page h2 {
+    margin-bottom: 40px;
+    font-size: 2em;
+    color: #333;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.category-item {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 40px);
+    max-width: calc(33.333% - 40px);
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.category-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.category-item h3 {
+    margin-top: 15px;
+    font-size: 1.5em;
+}
+
+.category-item p {
+    margin-top: 10px;
+    color: #666;
+}
+
+.category-item .view-more {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.category-item .view-more:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .footer-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+footer .social-media a {
+    margin: 0 5px;
+    display: inline-block;
+}
+
+footer .newsletter input {
+    padding: 10px;
+    margin-right: 10px;
+    width: 250px;
+    max-width: 80%;
+}
+
+footer .newsletter button {
+    padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+    header .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f8f8f8;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 0;
+    }
+
+    header .nav-links.active {
+        display: flex;
+    }
+
+    header .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    header .hamburger {
+        display: flex;
+    }
+
+    .category-list {
+        flex-direction: column;
+    }
+
+    .category-item {
+        max-width: 100%;
+    }
+}
+/* Category Details Page */
+.category-details {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.category-details h2 {
+    margin-bottom: 40px;
+    font-size: 2em;
+    color: #333;
+}
+
+.sort-filter {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sort-filter select, .sort-filter input {
+    padding: 10px;
+    font-size: 1em;
+}
+
+.review-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.review-item {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 40px);
+    max-width: calc(33.333% - 40px);
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.review-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.review-item h3 {
+    margin-top: 15px;
+    font-size: 1.5em;
+}
+
+.review-item p {
+    margin-top: 10px;
+    color: #666;
+}
+
+.review-item .rating {
+    margin-top: 10px;
+    color: #FFD700;
+    font-size: 1.2em;
+}
+/* Product Details Page */
+.product-details {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.product-info {
+    flex: 1;
+    max-width: 50%;
+    text-align: center;
+}
+
+.product-info img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-info h2 {
+    margin-top: 20px;
+    font-size: 2em;
+}
+
+.product-info p {
+    margin-top: 10px;
+    color: #666;
+}
+
+.product-info .rating {
+    margin-top: 10px;
+    color: #FFD700;
+    font-size: 1.2em;
+}
+
+.product-info button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-info button:hover {
+    background-color: #0056b3;
+}
+
+.user-reviews {
+    flex: 1;
+    max-width: 50%;
+}
+
+.user-reviews h3 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #333;
+}
+
+.review {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.review .username {
+    font-weight: bold;
+}
+
+.review .rating {
+    color: #FFD700;
+}
+/* CSS for landing animation */
+.landing-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadeInDown 1.5s ease forwards;
+    opacity: 0;
+    text-align: center;
+}
+
+@keyframes fadeInDown {
+    0% {
+        transform: translate(-50%, -100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+/* Content */
+.content {
+    display: none; /* Hide content until landing animation completes */
+}
+
+/* Show content after landing animation */
+.landing-animation:not(:empty) + .content {
+    display: block;
+}
+/* CSS for background color animation */
+.background-animation {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: changeBackgroundColor 5s infinite;
+}
+
+@keyframes changeBackgroundColor {
+    0% { background-color: #f7f7f7; }
+    25% { background-color: #e0e0e0; }
+    50% { background-color: #d1d1d1; }
+    75% { background-color: #c3c3c3; }
+    100% { background-color: #b5b5b5; }
+}
+
+/* Content */
+.content {
+    display: none; /* Hide content until background animation completes */
+}
+
+/* Show content after background animation */
+.background-animation:not(:empty) + .content {
+    display: block;
+}
+
+        .background-animation {
+            /* Your CSS styles for the background animation */
+        }
+        
+        /* Add more CSS styles as needed */
+    </style>
 </head>
 <body>
     <div class="background-animation">
         <h1>Welcome to Swift Picks</h1>
     </div>
-    <script src="JS/script..js"></script>
+
     <header>
         <div class="logo">ReviewSite</div>
         <nav>
@@ -30,76 +660,25 @@
             </div>
         </nav>
     </header>
+
     <section class="top-categories">
         <h2>Top Categories</h2>
         <div class="categories">
-            <div class="category">
-                <img src="images/Tech.jpg" alt="Category 1">
-                <h3>Techology</h3>
-                <p>reviews of gadgets, electronics, software, apps, and other technology-related products.</p>
-                <a href="categories.html">View Details</a>
-            </div>
-            <div class="category">
-                <img src="images/lifestyle.jpg" alt="Category 2">
-                <h3>Lifestyle</h3>
-                <p>products related to everyday life, such as fashion, home decor, fitness equipment, kitchen appliances, and more</p>
-            </div>
-            <div class="category">
-                <img src="images/6.jpg" alt="Category 3">
-                <h3>Entertainment</h3>
-                <p>Focus on reviews of movies, TV shows, video games, books, music, and other forms of entertainment.</p>
-            </div>
+            <!-- Your HTML content for top categories section -->
         </div>
     </section>
 
     <section class="latest-reviews">
         <h2>Latest Reviews</h2>
         <div class="reviews">
-            <div class="review">
-                <img src="images/6.jpg" alt="Review 1">
-                <h3>Product 1</h3>
-                <p>Short excerpt from the review.</p>
-                <span class="rating">★★★★☆</span>
-            </div>
-            <div class="review">
-                <img src="images/7.jpg" alt="Review 2">
-                <h3>Product 2</h3>
-                <p>Short excerpt from the review.</p>
-                <span class="rating">★★★☆☆</span>
-            </div>
-            <div class="review">
-                <img src="images/8.jpg" alt="Review 3">
-                <h3>Product 3</h3>
-                <p>Short excerpt from the review.</p>
-                <span class="rating">★★★★★</span>
-            </div>
+            <!-- Your HTML content for latest reviews section -->
         </div>
     </section>
 
     <section class="popular-products">
         <h2>Popular Products</h2>
         <div class="products">
-            <div class="product">
-                <img src="images/9.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Short description of the product.</p>
-                <span class="rating">★★★★☆</span>
-                <a href="product1.html">View Details</a>
-            </div>
-            <div class="product">
-                <img src="images/10.jpg" alt="Product 2">
-                <h3>Product 2</h3>
-                <p>Short description of the product.</p>
-                <span class="rating">★★★☆☆</span>
-                <a href="product2.html">View Details</a>
-            </div>
-            <div class="product">
-                <img src="product3.jpg" alt="Product 3">
-                <h3>Product 3</h3>
-                <p>Short description of the product.</p>
-                <span class="rating">★★★★★</span>
-                <a href="product3.html">View Details</a>
-            </div>
+            <!-- Your HTML content for popular products section -->
         </div>
     </section>
 
@@ -109,10 +688,7 @@
             <a href="#">Terms of Service</a>
         </div>
         <div class="social-media">
-            <a href="#"><img src="images/f.jpg" alt="Facebook"></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-            <a href="#"><img src="images/Linkedin logo.jpg" alt="LinkedIn"></a>
+            <!-- Your HTML content for social media links -->
         </div>
         <div class="newsletter">
             <form>
@@ -122,6 +698,197 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+    const carousel = document.querySelector('.carousel');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    let currentIndex = 0;
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    function showCarouselItem(index) {
+        carouselItems.forEach((item, i) => {
+            item.classList.toggle('active', i === index);
+        });
+    }
+
+    function nextCarouselItem() {
+        currentIndex = (currentIndex + 1) % carouselItems.length;
+        showCarouselItem(currentIndex);
+    }
+
+    function prevCarouselItem() {
+        currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+        showCarouselItem(currentIndex);
+    }
+
+    nextButton.addEventListener('click', nextCarouselItem);
+    prevButton.addEventListener('click', prevCarouselItem);
+
+    setInterval(nextCarouselItem, 5000); // Change slide every 5 seconds
+});
+document.addEventListener('DOMContentLoaded', () => {
+    // Navigation Menu Toggle
+    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Category Page Search Filter
+    const categoryFilterInput = document.querySelector('.filter-input');
+    const categoryItems = document.querySelectorAll('.category-item');
+
+    if (categoryFilterInput) {
+        categoryFilterInput.addEventListener('input', (e) => {
+            const filter = e.target.value.toLowerCase();
+            categoryItems.forEach(item => {
+                const categoryName = item.querySelector('h3').textContent.toLowerCase();
+                if (categoryName.includes(filter)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    }
+
+    // Category Details Page: Sorting and Filtering Reviews
+    const sortSelect = document.querySelector('#sortSelect');
+    const filterInput = document.querySelector('#filterInput');
+    const reviewItems = document.querySelectorAll('.review-item');
+
+    if (sortSelect) {
+        sortSelect.addEventListener('change', () => {
+            sortReviews();
+        });
+    }
+
+    if (filterInput) {
+        filterInput.addEventListener('input', (e) => {
+            const filter = e.target.value.toLowerCase();
+            reviewItems.forEach(item => {
+                const reviewText = item.querySelector('p').textContent.toLowerCase();
+                if (reviewText.includes(filter)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    }
+
+    function sortReviews() {
+        const sortValue = sortSelect.value;
+        const reviewsArray = Array.from(reviewItems);
+
+        reviewsArray.sort((a, b) => {
+            const ratingA = parseInt(a.dataset.rating);
+            const ratingB = parseInt(b.dataset.rating);
+
+            if (sortValue === 'newest') {
+                return b.dataset.date - a.dataset.date;
+            } else if (sortValue === 'highest') {
+                return ratingB - ratingA;
+            } else if (sortValue === 'lowest') {
+                return ratingA - ratingB;
+            }
+        });
+
+        reviewsArray.forEach(item => {
+            document.querySelector('.review-list').appendChild(item);
+        });
+    }
+});
+document.addEventListener('DOMContentLoaded', () => {
+    // User Authentication
+    const loginForm = document.getElementById('loginForm');
+    const registrationForm = document.getElementById('registrationForm');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = loginForm.querySelector('input[type="email"]').value;
+            const password = loginForm.querySelector('input[type="password"]').value;
+
+            // Implement login functionality (e.g., using Firebase Auth)
+            // Example:
+            // firebase.auth().signInWithEmailAndPassword(email, password)
+            //     .then((userCredential) => {
+            //         // Signed in
+            //         const user = userCredential.user;
+            //         console.log('User logged in:', user);
+            //     })
+            //     .catch((error) => {
+            //         const errorCode = error.code;
+            //         const errorMessage = error.message;
+            //         console.error('Login Error:', errorMessage);
+            //     });
+        });
+    }
+
+    if (registrationForm) {
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = registrationForm.querySelector('input[type="text"]').value;
+            const email = registrationForm.querySelector('input[type="email"]').value;
+            const password = registrationForm.querySelector('input[type="password"]').value;
+
+            // Implement registration functionality (e.g., using Firebase Auth)
+            // Example:
+            // firebase.auth().createUserWithEmailAndPassword(email, password)
+            //     .then((userCredential) => {
+            //         // Signed up
+            //         const user = userCredential.user;
+            //         console.log('User registered:', user);
+            //     })
+            //     .catch((error) => {
+            //         const errorCode = error.code;
+            //         const errorMessage = error.message;
+            //         console.error('Registration Error:', errorMessage);
+            //     });
+        });
+    }
+
+    // Review Submission
+    const reviewForm = document.getElementById('reviewForm');
+
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const rating = reviewForm.querySelector('input[type="number"]').value;
+            const reviewText = reviewForm.querySelector('textarea').value;
+
+            // Check if user is logged in (authenticated)
+            // Example:
+            // const user = firebase.auth().currentUser;
+            // if (user) {
+            //     // User is logged in, proceed with review submission
+            //     console.log('Submitting review...');
+            // } else {
+            //     // User is not logged in, prompt for login or registration
+            //     console.log('User not logged in. Please login or register.');
+            // }
+        });
+    }
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const backgroundAnimation = document.querySelector('.background-animation');
+    
+    // Show content after background animation completes
+    backgroundAnimation.addEventListener('animationend', function() {
+        const content = document.querySelector('.content');
+        content.style.display = 'block';
+    });
+});
+
+    </script>
 </body>
 </html>
