@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="Css/styles.css">
 </head>
 <body>
+      <div class="loader">
+        <img src="person-digging.gif" alt="Person Digging">
+        <p>Website in Alpha Phase (Under Development), Welcome</p>
+    </div>
+    
     <!-- Video Background -->
     <div class="video-container">
         <video autoplay loop muted id="video-background">
@@ -19,6 +24,32 @@
         </div>
     </div>
     <style>
+
+        body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Change the background color as needed */
+}
+
+.loader {
+    text-align: center;
+}
+
+.loader img {
+    width: 200px; /* Adjust the width of the image as needed */
+    height: auto;
+}
+
+.loader p {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+        
         /* Video container styles */
 .video-container {
     position: relative;
@@ -919,6 +950,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+        // Delay the loading of the website by 2 seconds
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        // Show the website content after 2 seconds
+        document.body.style.opacity = 1;
+    }, 2000); // 2000 milliseconds = 2 seconds
+});
+
+        
     </script>
 </body>
 </html>
