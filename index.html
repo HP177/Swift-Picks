@@ -20,7 +20,7 @@
     line-height: 1.6;
 }
 
-header {
+ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,73 +33,73 @@ header {
     z-index: 1000;
 }
 
-header .logo {
+ header .logo {
     font-size: 24px;
     font-weight: bold;
 }
 
-header nav {
+ header nav {
     position: relative;
 }
 
-header .nav-links {
+ header .nav-links {
     list-style: none;
     display: flex;
     gap: 20px;
 }
 
-header .nav-links li {
+ header .nav-links li {
     display: inline;
 }
 
-header .nav-links li a {
+ header .nav-links li a {
     text-decoration: none;
     color: #333;
     padding: 5px 10px;
 }
 
-header .nav-links li input {
+ header .nav-links li input {
     padding: 5px;
 }
 
-header .hamburger {
+ header .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
 }
 
-header .hamburger .line {
+ header .hamburger .line {
     width: 25px;
     height: 3px;
     background-color: #333;
     margin: 4px;
 }
 
-/* Main Banner */
-.main-banner {
+  /* Main Banner */
+ .main-banner {
     margin-top: 60px;
     background-color: #e2e2e2;
     position: relative;
     overflow: hidden;
 }
 
-.carousel {
+ .carousel {
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
 
-.carousel-item {
+ .carousel-item {
     min-width: 100%;
     transition: opacity 1s ease-in-out;
     position: relative;
 }
 
-.carousel-item img {
+ .carousel-item img {
     width: 100%;
     height: auto;
 }
-
-.carousel-caption {
+ 
+ .carousel-caption {
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -109,7 +109,7 @@ header .hamburger .line {
     border-radius: 5px;
 }
 
-.prev, .next {
+ .prev, .next {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -123,17 +123,17 @@ header .hamburger .line {
     border-radius: 0 3px 3px 0;
     user-select: none;
 }
-
-.next {
+ 
+ .next {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
 
-.prev:hover, .next:hover {
+ .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Top Categories */
+ /* Top Categories */
 .top-categories, .latest-reviews, .popular-products {
     padding: 60px 20px;
     text-align: center;
@@ -151,7 +151,7 @@ header .hamburger .line {
     flex-wrap: wrap;
 }
 
-.category, .review, .product {
+ .category, .review, .product {
     background-color: #fff;
     padding: 20px;
     margin: 10px;
@@ -163,23 +163,23 @@ header .hamburger .line {
     text-align: left;
 }
 
-.category img, .review img, .product img {
-    width: 100%;
+ .category img, .review img, .product img {
+     width: 100%;
     height: auto;
     border-radius: 8px;
 }
 
-.category h3, .review h3, .product h3 {
+ .category h3, .review h3, .product h3 {
     margin-top: 15px;
     font-size: 1.5em;
 }
 
-.category p, .review p, .product p {
+ .category p, .review p, .product p {
     margin-top: 10px;
     color: #666;
 }
 
-.rating {
+ .rating {
     display: inline-block;
     margin-top: 10px;
     color: #FFD700;
@@ -187,19 +187,19 @@ header .hamburger .line {
 }
 
 /* Footer */
-footer {
+ footer {
     background-color: #f8f8f8;
     padding: 20px;
     text-align: center;
 }
 
-footer .footer-links a {
+ footer .footer-links a {
     margin: 0 10px;
     text-decoration: none;
     color: #333;
 }
 
-footer .social-media a {
+ footer .social-media a {
     margin: 0 5px;
     display: inline-block;
 }
@@ -228,19 +228,19 @@ footer .newsletter button {
     }
 
     header .nav-links.active {
-        display: flex;
+          display: flex;
     }
 
     header .nav-links li {
-        text-align: center;
+         text-align: center;
         margin: 10px 0;
-    }
+     }
 
     header .hamburger {
-        display: flex;
+         display: flex;
     }
 
-    .categories, .reviews, .products {
+      .categories, .reviews, .products {
         flex-direction: column;
     }
 
@@ -249,24 +249,24 @@ footer .newsletter button {
     }
 }
 /* Categories Page */
-body {
+ body {
     font-family: Arial, sans-serif;
-    margin: 0;
+     margin: 0;
     padding: 0;
     color: #333;
     line-height: 1.6;
-}
+ }
 
-header {
+ header {
     display: flex;
-    justify-content: space-between;
+     justify-content: space-between;
     align-items: center;
-    background-color: #f8f8f8;
+     background-color: #f8f8f8;
     padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
-    top: 0;
+     top: 0;
     z-index: 1000;
 }
 
