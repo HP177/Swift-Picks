@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="Css/styles.css">
 </head>
     <body>
+
+         <div id="loading-screen">
+        <div class="loader">
+            <img src="L2.gif" alt="Loading GIF">
+            <p></p>
+        </div>
+    </div>
+        
           <!-- Video Background -->
     <div class="video-container">
         <video autoplay loop muted id="video-background">
@@ -18,78 +26,37 @@
             <h1>COMING SOON🚀🚀<h1>
             <!-- Add other banner content here -->
         </div>
-     <div id="loading-screen">
-        <div class="loader">
-            <img src="L2.gif" alt="Loading GIF">
-            <p></p>
-        </div>
-    </div>
 
 
-  <style>        
-             body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-}
+  <style>       
 
 #loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    z-index: 9999;
-    transition: opacity 0.5s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0s ease-out;
 }
 
-.loader {
-    text-align: center;
+#loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
 }
 
-.loader img {
-    width: 100px; /* Adjust the width of the GIF as needed */
-    height: auto;
+.loading-content {
+  text-align: center;
 }
 
-.loader p {
-    margin-top: 20px;
-    font-size: 18px;
-}
-
-
-        body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0; /* Change the background color as needed */
-}
-
-.loader {
-    text-align: center;
-}
-
-.loader img {
-    width: 200px; /* Adjust the width of the image as needed */
-    height: auto;
-}
-
-.loader p {
-    margin-top: 20px;
-    font-size: 18px;
+.loading-content img {
+  max-width: 100px;
+  display: block;
+  margin: 0 auto 20px;
 }
 
         
