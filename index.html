@@ -604,14 +604,15 @@ footer .newsletter button {
 .landing-animation:not(:empty) + .content {
     display: block;
 }
-/* CSS for background color animation */
-.background-animation {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: changeBackgroundColor 5s infinite;
+#video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
 }
 
 @keyframes changeBackgroundColor {
@@ -633,9 +634,10 @@ footer .newsletter button {
 }
 
     </style>
-    <div class="background-animation">
-        <h1>Welcome to Swift Picks</h1>
-    </div>
+   <video autoplay loop muted id="video-background">
+    <source src="path/to/your/video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
     <script src="JS/script..js"></script>
     <header>
         <div class="logo">ReviewSite</div>
