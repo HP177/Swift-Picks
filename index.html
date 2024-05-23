@@ -18,13 +18,59 @@
             <h1>Welcome to Swift Picks</h1>
             <!-- Add other banner content here -->
         </div>
-    </div>
-      <div class="loader">
-        <img src="Loading.gif" alt="Person Digging">
-        <p>Website in Alpha Phase (Under Development), Welcome</p>
+     <div id="loading-screen">
+        <div class="loader">
+            <img src="person-digging.gif" alt="Loading GIF">
+            <p>Website in Alpha Phase (Under Development), Welcome</p>
+        </div>
     </div>
 
+    <div id="main-content" style="display:none;">
+        <!-- Your main website content goes here -->
+        <h1>Welcome to Swift Picks</h1>
+    </div>
     <style>
+
+        body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loader {
+    text-align: center;
+}
+
+.loader img {
+    width: 100px; /* Adjust the width of the GIF as needed */
+    height: auto;
+}
+
+.loader p {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
 
         body {
     margin: 0;
@@ -951,13 +997,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-        // Delay the loading of the website by 2 seconds
-window.addEventListener('load', function() {
+       window.addEventListener('load', function() {
     setTimeout(function() {
-        // Show the website content after 2 seconds
-        document.body.style.opacity = 1;
-    }, 2000); // 2000 milliseconds = 2 seconds
+        // Fade out the loading screen
+        document.getElementById('loading-screen').style.opacity = '0';
+        setTimeout(function() {
+            // Hide the loading screen and show the main content
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }, 500); // Match this timeout with the CSS transition duration
+    }, 3000); // 3000 milliseconds = 3 seconds
 });
+
 
         
     </script>
