@@ -577,37 +577,6 @@ footer .newsletter button {
 .review .rating {
     color: #FFD700;
 }
-/* CSS for landing animation */
-.landing-animation {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: fadeInDown 1.5s ease forwards;
-    opacity: 0;
-    text-align: center;
-}
-
-@keyframes fadeInDown {
-    0% {
-        transform: translate(-50%, -100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translate(-50%, -50%);
-        opacity: 1;
-    }
-}
-
-/* Content */
-.content {
-    display: none; /* Hide content until landing animation completes */
-}
-
-/* Show content after landing animation */
-.landing-animation:not(:empty) + .content {
-    display: block;
-}
 #video-background {
     position: fixed;
     right: 0;
